@@ -1,0 +1,126 @@
+/* Styles moved from aboutme.vue per request */
+.about-page {
+  min-height: calc(100vh - 64px);
+  /* Dotted/polka background similar to the design */
+  background-color: #fffaf6;
+  background-image: radial-gradient(rgba(200,150,150,0.06) 1px, transparent 1px);
+  background-size: 22px 22px;
+  color: #8b3b3b;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  margin-bottom: 28px;
+}
+
+.nav-item {
+  color: #d94b4b;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.about-container {
+  display: flex;
+  gap: 36px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.left {
+  flex: 0 1 460px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tama-frame {
+  width: 150px;
+  height: 150px;
+  border-radius: 28% 72% 58% 42% / 46% 36% 64% 54%;
+  /* transparent background per request */
+  background: transparent; /* importante */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0; /* adjusted for smaller frame */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  position: relative;
+}
+
+.tama-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain; /* mantiene proporción y transparencia */
+  background: transparent; /* importante */
+  border-radius: 0; /* let image keep its transparency */
+}
+
+.right {
+  flex: 1 1 420px;
+  max-width: 560px;
+}
+
+.dam-heading {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.dam-text {
+  font-size: 3.2rem;
+  color: #f2a6c0;
+  font-weight: 700;
+  text-transform: lowercase;
+  letter-spacing: 6px;
+}
+
+.intro-title {
+  color: #b83b3b;
+  font-size: 1.15rem;
+  font-weight: 500;
+  margin: 8px 0 12px 0;
+}
+
+.intro-text {
+  color: #c35a5a;
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+.socials {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background: #fff1f4;
+  color: #b83b3b;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .tama-frame { width: 200px; height: 160px; }
+  .dam-text { font-size: 2.2rem; }
+  .about-container { gap: 20px; }
+}
+
+@media (max-width: 600px) {
+  .tama-frame { width: 160px; height: 140px; }
+  .nav-links { gap: 18px; font-size: 0.85rem; }
+  .about-container { flex-direction: column; }
+  .right { text-align: center; }
+}
