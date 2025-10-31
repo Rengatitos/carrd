@@ -1,0 +1,95 @@
+/* === Barra de navegación fija === */
+.nav-links {
+  position: fixed;                /* 🔥 la hace estática en toda la página */
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  list-style: none;
+  padding: 1rem 0;
+  margin: 0;
+  background-color: rgba(255, 255, 255, 0.9); /* fondo translúcido */
+  backdrop-filter: blur(8px);                 /* efecto blur tipo Canva */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  z-index: 1000;                              /* se mantiene encima del contenido */
+}
+
+/* === Estilos de los ítems === */
+.nav-item {
+  color: #d94b4b;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  background: transparent;
+  font-size: 1.1rem;
+  position: relative;
+  padding: 8px 6px;
+  border-radius: 6px;
+  transition: color 180ms ease, background-color 180ms ease, transform 120ms ease;
+}
+
+/* Línea animada inferior */
+.nav-item::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: center;
+  width: 56%;
+  height: 3px;
+  background: #d94b4b;
+  border-radius: 2px;
+  transition: transform 180ms ease;
+  pointer-events: none;
+  opacity: 0.98;
+}
+
+.nav-item:hover,
+.nav-item:focus,
+.nav-item:focus-visible {
+  color: #ffffff;
+  background-color: rgba(217, 75, 75, 0.12);
+  outline: none;
+}
+
+.nav-item:hover::after,
+.nav-item:focus::after,
+.nav-item.active::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+.nav-item.active {
+  color: #ffffff;
+  background-color: #d94b4b;
+}
+
+/* Accesibilidad */
+.nav-item:focus-visible {
+  box-shadow: 0 0 0 3px rgba(217,75,75,0.18);
+}
+
+/* 📱 Responsive */
+@media (max-width: 640px) {
+  .nav-links {
+    flex-direction: column;
+    gap: 12px;
+    padding: 0.75rem 0;
+    align-items: center;
+  }
+
+  .nav-item {
+    font-size: 1rem;
+    padding: 10px 14px;
+  }
+}
+
+/* 🧩 Espacio para que las secciones no queden ocultas detrás del nav */
+section {
+  scroll-behavior: smooth;
+  padding-top: 100px;   /* da espacio por el nav fijo */
+  min-height: 100vh;
+}

@@ -1,126 +1,189 @@
-/* Styles moved from aboutme.vue per request */
+/* === Fondo general === */
 .about-page {
   min-height: calc(100vh - 64px);
-  /* Dotted/polka background similar to the design */
-  background-color: #fffaf6;
-  background-image: radial-gradient(rgba(200,150,150,0.06) 1px, transparent 1px);
-  background-size: 22px 22px;
+  background: transparent; /* let the global DotsBackground show through */
   color: #8b3b3b;
-}
-
-.nav-links {
   display: flex;
-  justify-content: center;
-  gap: 48px;
-  margin-bottom: 28px;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
+  
+  z-index: 1;
 }
 
-.nav-item {
-  color: #d94b4b;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  text-decoration: none;
-  font-size: 0.95rem;
-}
-
+/* === Contenedor principal === */
 .about-container {
   display: flex;
-  gap: 36px;
   align-items: center;
   justify-content: center;
+  gap: 80px;
+  background: transparent;
   flex-wrap: wrap;
+  max-width: 1200px;
+  width: 100%;
+  padding: 20px 40px;
 }
 
+/* === Imagen del tamagotchi === */
 .left {
-  flex: 0 1 460px;
+  flex: 0 1 420px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .tama-frame {
-  width: 150px;
-  height: 150px;
-  border-radius: 28% 72% 58% 42% / 46% 36% 64% 54%;
-  /* transparent background per request */
-  background: transparent; /* importante */
+  width: 320px;
+  height: 320px;
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0; /* adjusted for smaller frame */
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
   position: relative;
+  transition: transform 0.3s ease;
 }
+
+.tama-frame:hover {
+  transform: scale(1.04);
+}
+
+
+
+
 
 .tama-img {
   width: 100%;
   height: auto;
-  object-fit: contain; /* mantiene proporción y transparencia */
-  background: transparent; /* importante */
-  border-radius: 0; /* let image keep its transparency */
+  object-fit: contain;
+  background: transparent;
 }
 
+/* === Texto y logo === */
 .right {
-  flex: 1 1 420px;
-  max-width: 560px;
+  flex: 1 1 500px;
+  max-width: 600px;
+  text-align: left; /* <-- alinea todo hacia la izquierda */
 }
 
+/* === Logo “dam” === */
 .dam-heading {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
-.dam-text {
-  font-size: 3.2rem;
-  color: #f2a6c0;
-  font-weight: 700;
-  text-transform: lowercase;
-  letter-spacing: 6px;
+.dam-logo {
+  width: 300px;
+  height: auto;
+  object-fit: contain;
+  background: transparent;
 }
 
+/* === Título e introducción === */
 .intro-title {
   color: #b83b3b;
-  font-size: 1.15rem;
+  font-size: 1.6rem;
   font-weight: 500;
-  margin: 8px 0 12px 0;
+  line-height: 1.5;
+  margin-bottom: 20px;
 }
 
 .intro-text {
   color: #c35a5a;
-  line-height: 1.6;
-  margin-bottom: 18px;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  margin-bottom: 26px;
+  max-width: 520px;
 }
 
+/* === Redes sociales === */
 .socials {
   display: flex;
-  gap: 10px;
+  gap: 60px;
   align-items: center;
+  justify-content: flex-start;
 }
 
 .social {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 8px;
-  background: #fff1f4;
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  background: #fcefc2;
   color: #b83b3b;
   text-decoration: none;
   font-weight: 700;
+  font-size: 1.1rem;
+  transition: all 0.25s ease;
 }
 
+/* New social-container styles requested (top-level, not nested) */
+.social-container {
+  display: flex;
+  flex-direction: column; /* todo en columna */
+  align-items: flex-start; /* alineado a la izquierda */
+  background: transparent;
+  padding: 20px;
+}
+
+.dam-logo {
+  width: 400px; /* más grande */
+  height: auto;
+  margin-bottom: 8px;
+}
+
+.social-links {
+  display: flex;
+  gap: 20px; /* espacio entre iconos */
+}
+
+.social q-icon {
+  font-size: 36px; /* tamaño grande */
+  color: white; /* color por defecto */
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social q-icon:hover {
+  transform: scale(1.2);
+  color: #ff6b6b;
+}
+
+.social:hover {
+  background: #ffccd5;
+  transform: translateY(-2px);
+}
+/* The global dots background is handled by DotsBackground.vue */
+
+/* === Responsive === */
 @media (max-width: 900px) {
-  .tama-frame { width: 200px; height: 160px; }
-  .dam-text { font-size: 2.2rem; }
-  .about-container { gap: 20px; }
-}
+  .about-container {
+    flex-direction: column;
+    gap: 40px;
+    text-align: center;
+  }
 
-@media (max-width: 600px) {
-  .tama-frame { width: 160px; height: 140px; }
-  .nav-links { gap: 18px; font-size: 0.85rem; }
-  .about-container { flex-direction: column; }
-  .right { text-align: center; }
+  .tama-frame {
+    width: 260px;
+    height: 260px;
+  }
+
+  .dam-logo {
+    width: 240px;
+  }
+
+  .intro-title {
+    font-size: 1.3rem;
+    text-align: center;
+  }
+
+  .intro-text {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .socials {
+    justify-content: center;
+  }
 }
